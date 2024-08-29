@@ -12,9 +12,8 @@ class MessengerTypes(models.Model):
     def __str__(self):
         return self.name
 
-
 class Orders(models.Model):
-    service_type = models.ForeignKey(ServiceTypes, on_delete=models.CASCADE, default=1)
+    service_types = models.ManyToManyField(ServiceTypes)
     name = models.CharField(max_length=255, null=False)
     project_name = models.CharField(max_length=255, null=False)
     messenger_type = models.ForeignKey(MessengerTypes, on_delete=models.CASCADE, default=1)
